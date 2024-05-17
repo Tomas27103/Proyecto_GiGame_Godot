@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4py2ydddlxfp"]
+
+[ext_resource type="Texture2D" uid="uid://cg0cmjjv7pj55" path="res://pasto.png" id="1_gu8b1"]
+[ext_resource type="Script" path="res://pasto.gd" id="1_qrbsh"]
+[ext_resource type="PackedScene" uid="uid://8pun2dixyoku" path="res://hurtbox.tscn" id="3_nlwkn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3w3j"]
+size = Vector2(33, 34)
+
+[node name="Pasto" type="Node2D"]
+script = ExtResource("1_qrbsh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gu8b1")
+offset = Vector2(-8, -8)
+hframes = 5
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_nlwkn")]
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(15.5, 24)
+shape = SubResource("RectangleShape2D_p3w3j")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

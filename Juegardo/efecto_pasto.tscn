@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://djqbwks15vhra"]
+
+[ext_resource type="Script" path="res://efecto.gd" id="1_ti3t8"]
+[ext_resource type="Texture2D" uid="uid://cg0cmjjv7pj55" path="res://pasto.png" id="2_xk1im"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5hki"]
+atlas = ExtResource("2_xk1im")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7rpx"]
+atlas = ExtResource("2_xk1im")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luxfx"]
+atlas = ExtResource("2_xk1im")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkoj8"]
+atlas = ExtResource("2_xk1im")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o03o6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5hki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7rpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luxfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkoj8")
+}],
+"loop": false,
+"name": &"Animate",
+"speed": 5.0
+}]
+
+[node name="efectoPasto" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_o03o6")
+animation = &"Animate"
+offset = Vector2(-8, -8)
+script = ExtResource("1_ti3t8")

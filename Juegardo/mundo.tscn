@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlifmiomeigwx"]
+
+[ext_resource type="Texture2D" uid="uid://cpv6t8bx6jbg0" path="res://pisoCueva.png" id="1_gnm26"]
+[ext_resource type="PackedScene" uid="uid://3w7oonxxuy5n" path="res://jugador.tscn" id="1_oalxr"]
+[ext_resource type="PackedScene" uid="uid://bh1g7jiwy3dco" path="res://piedra.tscn" id="2_3fg8y"]
+[ext_resource type="Texture2D" uid="uid://bqpdws7d7deik" path="res://pixil-frame-0 (3).png" id="2_4vcaj"]
+[ext_resource type="PackedScene" uid="uid://c4py2ydddlxfp" path="res://pasto.tscn" id="5_mbu78"]
+[ext_resource type="PackedScene" uid="uid://ttljvxr1x3cp" path="res://enemigo.tscn" id="6_66mbu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_of1fd"]
+texture = ExtResource("2_4vcaj")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_140hc"]
+tile_size = Vector2i(50, 50)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.145098, 0.129412, 0.117647, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_of1fd")
+
+[node name="Mundo" type="Node2D"]
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_gnm26")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1152, 648)
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_140hc")
+rendering_quadrant_size = 50
+format = 2
+layer_0/tile_data = PackedInt32Array(131084, 65536, 1, 196620, 65536, 1, 262156, 65536, 1, 327692, 65536, 1, 327693, 65536, 1, 393229, 65536, 1, 458765, 65536, 1, 524301, 65536, 1, 589837, 65536, 1, 589836, 65536, 1, 655372, 65536, 1, 524300, 65536, 1, 458764, 65536, 1, 393228, 65536, 1, 655373, 65536, 1, 720909, 65536, 1, 720908, 65536, 1, 786444, 65536, 1, 786445, 65536, 1, 262157, 65536, 1, 196621, 65536, 1, 131085, 65536, 1, 65549, 65536, 1, 65548, 65536, 1, 12, 65536, 1, 13, 65536, 1, 524303, 0, 0, 524304, 0, 0, 589840, 0, 0, 720910, 65536, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 0, 40, 0, 96, 0, 648, 1152, 648, 1152, 0, 1088, 0, 1088, 624, 40, 624, 40, 0)
+
+[node name="Jugador" parent="." instance=ExtResource("1_oalxr")]
+position = Vector2(237, 179)
+
+[node name="Piedras" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Piedra" parent="Piedras" instance=ExtResource("2_3fg8y")]
+position = Vector2(888, 448)
+
+[node name="Piedra2" parent="Piedras" instance=ExtResource("2_3fg8y")]
+position = Vector2(392, 480)
+
+[node name="Piedra3" parent="Piedras" instance=ExtResource("2_3fg8y")]
+position = Vector2(856, 144)
+
+[node name="Pasto" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Pasto2" parent="Pasto" instance=ExtResource("5_mbu78")]
+position = Vector2(872, 320)
+
+[node name="Pasto" parent="Pasto" instance=ExtResource("5_mbu78")]
+position = Vector2(648, 312)
+
+[node name="Pasto3" parent="Pasto" instance=ExtResource("5_mbu78")]
+position = Vector2(264, 472)
+
+[node name="Pasto4" parent="Pasto" instance=ExtResource("5_mbu78")]
+position = Vector2(272, 480)
+
+[node name="Enemigo" parent="." instance=ExtResource("6_66mbu")]
+position = Vector2(400, 160)

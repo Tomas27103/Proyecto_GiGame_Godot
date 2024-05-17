@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://y4d06h5fcqhi"]
+
+[ext_resource type="Texture2D" uid="uid://bfu2q27mrflir" path="res://golpe.png" id="1_2cke6"]
+[ext_resource type="Script" path="res://efecto.gd" id="2_wbcnw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpye8"]
+atlas = ExtResource("1_2cke6")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do53x"]
+atlas = ExtResource("1_2cke6")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rqvi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpye8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do53x")
+}],
+"loop": false,
+"name": &"Animate",
+"speed": 5.0
+}]
+
+[node name="golpe" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2rqvi")
+animation = &"Animate"
+script = ExtResource("2_wbcnw")
